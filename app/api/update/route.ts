@@ -27,5 +27,17 @@ export async function POST(request: Request) {
 		}
 	})
 
-	return NextResponse.json(data)
+	const result = data.map((element) => {
+		return {
+			data: {
+				...element.data,
+				current_price: products.find(
+					(item) => item.code === element.data.product_code
+				)?.sales_price
+			},
+			broken_rules: element.broken_rules
+		}
+	})
+
+	return NextResponse.json(result)
 }

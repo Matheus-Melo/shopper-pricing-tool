@@ -34,7 +34,7 @@ export default function FileUpload() {
 					})
 
 					const result = (await res.json()) as ProductData[]
-					console.log('result:', result)
+
 					setProductData(result)
 				}
 			}
@@ -52,9 +52,9 @@ export default function FileUpload() {
 			body: JSON.stringify({ data: productData })
 		})
 
-		const result = await res.json()
+		const result = (await res.json()) as ProductData[]
 
-		console.log(result)
+		setProductData(result)
 	}
 
 	return (
