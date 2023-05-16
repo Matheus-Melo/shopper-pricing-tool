@@ -29,7 +29,8 @@ export default function FileUpload() {
 						},
 						body: JSON.stringify({
 							csv_data: csv?.data
-						})
+						}),
+						cache: 'no-store'
 					})
 
 					const result = (await res.json()) as ProductData[]
